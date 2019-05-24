@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="proyecto_finalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Aplicativos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descrpcion" Type="nchar" MaxLength="300" />
+    <Property Name="Id_tipo" Type="int" Nullable="false" />
+    <Property Name="Id_estado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estados">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Incidencias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id_aplicativo" Type="int" Nullable="false" />
+    <Property Name="Id_usuario" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+    <Property Name="Fecha_estimada" Type="datetime" Nullable="false" />
+    <Property Name="Id_prioridad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Prioridad">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+    <Property Name="Id_estado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_aplicativo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Fecha_nacimiento" Type="datetime" Nullable="false" />
+    <Property Name="Id_estado" Type="int" Nullable="false" />
+    <Property Name="Id_rol" Type="int" Nullable="false" />
+    <Property Name="Contrasena" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="NombreUsuario" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios_aplicativos">
+    <Key>
+      <PropertyRef Name="Id_usuario" />
+    </Key>
+    <Property Name="Id_usuario" Type="int" Nullable="false" />
+    <Property Name="Id_aplicativo" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Aplicativos_To_Estados">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+    <End Role="Aplicativos" Type="Self.Aplicativos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Aplicativos">
+        <PropertyRef Name="Id_estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Aplicativos_To_Tipo">
+    <End Role="Tipo_aplicativo" Type="Self.Tipo_aplicativo" Multiplicity="1" />
+    <End Role="Aplicativos" Type="Self.Aplicativos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_aplicativo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Aplicativos">
+        <PropertyRef Name="Id_tipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Incidencias_To_aplicativos">
+    <End Role="Aplicativos" Type="Self.Aplicativos" Multiplicity="1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aplicativos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Id_aplicativo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Incidencias_To_prioridades">
+    <End Role="Prioridad" Type="Self.Prioridad" Multiplicity="1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Prioridad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Id_prioridad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Incidencias_To_usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_To_estados">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+    <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="Id_estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_To_aplicativos">
+    <End Role="Aplicativos" Type="Self.Aplicativos" Multiplicity="1" />
+    <End Role="Usuarios_aplicativos" Type="Self.Usuarios_aplicativos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aplicativos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios_aplicativos">
+        <PropertyRef Name="Id_aplicativo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_To_usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Usuarios_aplicativos" Type="Self.Usuarios_aplicativos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios_aplicativos">
+        <PropertyRef Name="Id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_To_estados">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="Id_estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_To_roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="Id_rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="proyecto_finalModelStoreContainer">
+    <EntitySet Name="Aplicativos" EntityType="Self.Aplicativos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Incidencias" EntityType="Self.Incidencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Prioridad" EntityType="Self.Prioridad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_aplicativo" EntityType="Self.Tipo_aplicativo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios_aplicativos" EntityType="Self.Usuarios_aplicativos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Aplicativos_To_Estados" Association="Self.FK_Aplicativos_To_Estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Aplicativos" EntitySet="Aplicativos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Aplicativos_To_Tipo" Association="Self.FK_Aplicativos_To_Tipo">
+      <End Role="Tipo_aplicativo" EntitySet="Tipo_aplicativo" />
+      <End Role="Aplicativos" EntitySet="Aplicativos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Incidencias_To_aplicativos" Association="Self.FK_Incidencias_To_aplicativos">
+      <End Role="Aplicativos" EntitySet="Aplicativos" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Incidencias_To_prioridades" Association="Self.FK_Incidencias_To_prioridades">
+      <End Role="Prioridad" EntitySet="Prioridad" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Incidencias_To_usuarios" Association="Self.FK_Incidencias_To_usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_To_estados" Association="Self.FK_Roles_To_estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_To_aplicativos" Association="Self.FK_Table_To_aplicativos">
+      <End Role="Aplicativos" EntitySet="Aplicativos" />
+      <End Role="Usuarios_aplicativos" EntitySet="Usuarios_aplicativos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_To_usuarios" Association="Self.FK_Table_To_usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Usuarios_aplicativos" EntitySet="Usuarios_aplicativos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_To_estados" Association="Self.FK_Usuarios_To_estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_To_roles" Association="Self.FK_Usuarios_To_roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

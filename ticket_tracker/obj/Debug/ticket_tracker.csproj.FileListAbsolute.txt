@@ -1,0 +1,10 @@
+c:\users\krlosps4\documents\visual studio 2013\Projects\ticket_tracker\ticket_tracker\bin\ticket_tracker.dll.config
+c:\users\krlosps4\documents\visual studio 2013\Projects\ticket_tracker\ticket_tracker\bin\ticket_tracker.dll
+c:\users\krlosps4\documents\visual studio 2013\Projects\ticket_tracker\ticket_tracker\bin\ticket_tracker.pdb
+c:\users\krlosps4\documents\visual studio 2013\Projects\ticket_tracker\ticket_tracker\obj\Debug\ticket_tracker.csprojResolveAssemblyReference.cache
+c:\users\krlosps4\documents\visual studio 2013\Projects\ticket_tracker\ticket_tracker\obj\Debug\ticket_tracker.dll
+c:\users\krlosps4\documents\visual studio 2013\Projects\ticket_tracker\ticket_tracker\obj\Debug\ticket_tracker.pdb
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\ticket_tracker\ticket_tracker\bin\EntityFramework.dll
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\ticket_tracker\ticket_tracker\bin\EntityFramework.SqlServer.dll
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\ticket_tracker\ticket_tracker\bin\EntityFramework.xml
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\ticket_tracker\ticket_tracker\bin\EntityFramework.SqlServer.xml

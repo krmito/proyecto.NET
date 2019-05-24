@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="33ab06ea3e5248168a768cc0f1050d2b" Name="Diagram1">
+        <EntityTypeShape EntityType="proyecto_finalModel.Aplicativo" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyecto_finalModel.Estado" Width="1.5" PointX="0.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyecto_finalModel.Incidencia" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyecto_finalModel.Prioridad" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyecto_finalModel.Role" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyecto_finalModel.Tipo_aplicativo" Width="1.5" PointX="3.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="proyecto_finalModel.Usuario" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="proyecto_finalModel.FK_Aplicativos_To_Estados" ManuallyRouted="false" />
+        <AssociationConnector Association="proyecto_finalModel.FK_Aplicativos_To_Tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="proyecto_finalModel.FK_Incidencias_To_aplicativos" ManuallyRouted="false" />
+        <AssociationConnector Association="proyecto_finalModel.FK_Roles_To_estados" ManuallyRouted="false" />
+        <AssociationConnector Association="proyecto_finalModel.FK_Usuarios_To_estados" ManuallyRouted="false" />
+        <AssociationConnector Association="proyecto_finalModel.FK_Incidencias_To_prioridades" ManuallyRouted="false" />
+        <AssociationConnector Association="proyecto_finalModel.FK_Incidencias_To_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="proyecto_finalModel.FK_Usuarios_To_roles" ManuallyRouted="false" />
+        <AssociationConnector Association="proyecto_finalModel.Usuarios_aplicativos" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

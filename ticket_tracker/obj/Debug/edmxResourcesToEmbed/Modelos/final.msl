@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="proyecto_finalModelStoreContainer" CdmEntityContainer="proyecto_finalEntities">
+    <EntitySetMapping Name="Aplicativos">
+      <EntityTypeMapping TypeName="proyecto_finalModel.Aplicativo">
+        <MappingFragment StoreEntitySet="Aplicativos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descrpcion" ColumnName="Descrpcion" />
+          <ScalarProperty Name="Id_tipo" ColumnName="Id_tipo" />
+          <ScalarProperty Name="Id_estado" ColumnName="Id_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estados">
+      <EntityTypeMapping TypeName="proyecto_finalModel.Estado">
+        <MappingFragment StoreEntitySet="Estados">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incidencias">
+      <EntityTypeMapping TypeName="proyecto_finalModel.Incidencia">
+        <MappingFragment StoreEntitySet="Incidencias">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_aplicativo" ColumnName="Id_aplicativo" />
+          <ScalarProperty Name="Id_usuario" ColumnName="Id_usuario" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Fecha_estimada" ColumnName="Fecha_estimada" />
+          <ScalarProperty Name="Id_prioridad" ColumnName="Id_prioridad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prioridads">
+      <EntityTypeMapping TypeName="proyecto_finalModel.Prioridad">
+        <MappingFragment StoreEntitySet="Prioridad">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="proyecto_finalModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id_estado" ColumnName="Id_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_aplicativo">
+      <EntityTypeMapping TypeName="proyecto_finalModel.Tipo_aplicativo">
+        <MappingFragment StoreEntitySet="Tipo_aplicativo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="proyecto_finalModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Fecha_nacimiento" ColumnName="Fecha_nacimiento" />
+          <ScalarProperty Name="Id_estado" ColumnName="Id_estado" />
+          <ScalarProperty Name="Id_rol" ColumnName="Id_rol" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Usuarios_aplicativos" TypeName="proyecto_finalModel.Usuarios_aplicativos" StoreEntitySet="Usuarios_aplicativos">
+      <EndProperty Name="Aplicativos">
+        <ScalarProperty Name="Id" ColumnName="Id_aplicativo" />
+      </EndProperty>
+      <EndProperty Name="Usuarios">
+        <ScalarProperty Name="Id" ColumnName="Id_usuario" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
