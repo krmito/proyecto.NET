@@ -8,3 +8,12 @@ C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\ticket_tracker\ticket_tr
 C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\ticket_tracker\ticket_tracker\bin\EntityFramework.SqlServer.dll
 C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\ticket_tracker\ticket_tracker\bin\EntityFramework.xml
 C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\ticket_tracker\ticket_tracker\bin\EntityFramework.SqlServer.xml
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\bin\ticket_tracker.dll.config
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\bin\ticket_tracker.dll
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\bin\ticket_tracker.pdb
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\bin\EntityFramework.dll
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\bin\EntityFramework.SqlServer.dll
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\bin\EntityFramework.xml
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\bin\EntityFramework.SqlServer.xml
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\obj\Debug\ticket_tracker.dll
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\obj\Debug\ticket_tracker.pdb

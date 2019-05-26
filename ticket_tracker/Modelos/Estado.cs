@@ -24,6 +24,7 @@ namespace ticket_tracker.Modelos
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
+        public bool Estado1 { get; set; }
     
         public virtual ICollection<Aplicativo> Aplicativos { get; set; }
         public virtual ICollection<Role> Roles { get; set; }

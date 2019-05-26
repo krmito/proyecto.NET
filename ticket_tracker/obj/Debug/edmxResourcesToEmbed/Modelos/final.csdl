@@ -24,6 +24,7 @@
     <NavigationProperty Name="Aplicativos" Relationship="Self.FK_Aplicativos_To_Estados" FromRole="Estados" ToRole="Aplicativos" />
     <NavigationProperty Name="Roles" Relationship="Self.FK_Roles_To_estados" FromRole="Estados" ToRole="Roles" />
     <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_To_estados" FromRole="Estados" ToRole="Usuarios" />
+    <Property Name="Estado1" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Incidencia">
     <Key>

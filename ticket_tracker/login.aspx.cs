@@ -21,8 +21,8 @@ namespace ticket_tracker
             using (proyecto_finalEntities entidades = new proyecto_finalEntities())
             {
                 var usuario = entidades.Usuarios
-                                .Where(s => s.NombreUsuario == Login1.UserName
-                                    && s.Contrasena == Login1.Password && s.Id_estado == 1)
+                                .Where(s => s.NombreUsuario.Trim() == Login1.UserName.Trim()
+                                    && s.Contrasena.Trim() == Login1.Password.Trim() && s.Id_estado == 2)
                                 .FirstOrDefault<Usuario>();
                 if (usuario != null)
                 {

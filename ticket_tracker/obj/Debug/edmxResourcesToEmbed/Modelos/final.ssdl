@@ -14,9 +14,10 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Incidencias">
     <Key>

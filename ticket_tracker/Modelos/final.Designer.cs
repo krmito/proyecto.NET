@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\users\krlosps4\documents\visual studio 2013\Projects\ticket_tracker\ticket_tracker\Modelos\final.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\Modelos\final.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
