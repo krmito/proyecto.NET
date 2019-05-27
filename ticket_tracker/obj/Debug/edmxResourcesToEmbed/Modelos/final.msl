@@ -56,6 +56,7 @@
     <EntitySetMapping Name="Tipo_aplicativo">
       <EntityTypeMapping TypeName="proyecto_finalModel.Tipo_aplicativo">
         <MappingFragment StoreEntitySet="Tipo_aplicativo">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />

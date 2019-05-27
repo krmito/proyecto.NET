@@ -70,6 +70,7 @@
     <Content Include="Gestionar_incidencias.aspx" />
     <Content Include="Gestionar_prioridades.aspx" />
     <Content Include="Gestionar_roles.aspx" />
+    <Content Include="Gestionar_tipo_aplicativo.aspx" />
     <Content Include="Gestionar_usuarios.aspx" />
     <Content Include="master_page.Master" />
     <None Include="Web.Debug.config">
@@ -158,6 +159,13 @@
     </Compile>
     <Compile Include="Gestionar_roles.aspx.designer.cs">
       <DependentUpon>Gestionar_roles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Gestionar_tipo_aplicativo.aspx.cs">
+      <DependentUpon>Gestionar_tipo_aplicativo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gestionar_tipo_aplicativo.aspx.designer.cs">
+      <DependentUpon>Gestionar_tipo_aplicativo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Gestionar_usuarios.aspx.cs">
       <DependentUpon>Gestionar_usuarios.aspx</DependentUpon>

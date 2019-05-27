@@ -68,6 +68,7 @@
     <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="Aplicativos" Relationship="Self.FK_Aplicativos_To_Tipo" FromRole="Tipo_aplicativo" ToRole="Aplicativos" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
