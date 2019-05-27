@@ -54,6 +54,7 @@
                 :</td>
             <td class="auto-style2">
                 <asp:DropDownList ID="ddlActivo" runat="server" Height="16px" Width="289px">
+                    <asp:ListItem Value="1">--Selecciona--</asp:ListItem>
                     <asp:ListItem Value="True">Activo</asp:ListItem>
                     <asp:ListItem Value="false">Inactivo</asp:ListItem>
                 </asp:DropDownList>
@@ -71,7 +72,7 @@
             <td>&nbsp;</td>
             <td>
                 <asp:Button ID="Button1" runat="server" Text="Guardar" OnClick="Button1_Click" />
-                <asp:Button ID="Button2" runat="server" Text="Limpiar" />
+                <asp:Button ID="Button2" runat="server" Text="Limpiar" OnClick="Button2_Click" />
                 <asp:Button ID="txtCerrar" runat="server" OnClick="txtCerrar_Click" Text="Cerrar" />
             </td>
             <td>&nbsp;</td>
@@ -80,14 +81,29 @@
 </div>
 
     <div id="tabla" runat="server">
-         <asp:GridView ID="gvEstados" runat="server" AutoGenerateColumns="False" OnRowCommand="gvEstados_RowCommand">
+         <asp:GridView ID="gvEstados" runat="server" AutoGenerateColumns="False" OnRowCommand="gvEstados_RowCommand" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="ID" />
                 <asp:BoundField DataField="Nombre" HeaderText="NOMBRE" />
                 <asp:BoundField DataField="Descripcion" HeaderText="DESCRIPCIÓN" />
+                <asp:TemplateField HeaderText="ESTADO">
+                    <ItemTemplate>
+                    <asp:Label Text='<%# Eval("Estado1").ToString() == "true" ? "Activo" : "Inactivo" %>'
+                    runat="server" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:ButtonField CommandName="Upd" Text="Editar" />
                 <asp:ButtonField CommandName="Del" Text="Eliminar" />
             </Columns>
+             <FooterStyle BackColor="#CCCCCC" />
+             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+             <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
+             <RowStyle BackColor="White" />
+             <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+             <SortedAscendingCellStyle BackColor="#F1F1F1" />
+             <SortedAscendingHeaderStyle BackColor="#808080" />
+             <SortedDescendingCellStyle BackColor="#CAC9C9" />
+             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
     </div>
 </asp:Content>

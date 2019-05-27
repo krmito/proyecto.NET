@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="Descrpcion" Type="nchar" MaxLength="300" />
           <Property Name="Id_tipo" Type="int" Nullable="false" />
@@ -28,7 +28,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_aplicativo" Type="int" Nullable="false" />
           <Property Name="Id_usuario" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="nchar" MaxLength="300" />
@@ -39,7 +39,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="Descripcion" Type="nchar" MaxLength="300" />
         </EntityType>
@@ -47,7 +47,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="Descripcion" Type="nchar" MaxLength="300" />
           <Property Name="Id_estado" Type="int" Nullable="false" />
@@ -56,15 +56,16 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="Fecha_nacimiento" Type="datetime" Nullable="false" />
           <Property Name="Id_estado" Type="int" Nullable="false" />
@@ -321,6 +322,7 @@
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Aplicativos" Relationship="Self.FK_Aplicativos_To_Tipo" FromRole="Tipo_aplicativo" ToRole="Aplicativos" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -544,6 +546,7 @@
           <EntitySetMapping Name="Tipo_aplicativo">
             <EntityTypeMapping TypeName="proyecto_finalModel.Tipo_aplicativo">
               <MappingFragment StoreEntitySet="Tipo_aplicativo">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />

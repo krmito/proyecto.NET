@@ -8,40 +8,29 @@ using ticket_tracker.Modelos;
 
 namespace ticket_tracker
 {
-    
-
-    public partial class Gestionar_estados : System.Web.UI.Page
+    public partial class Gestionar_tipo_aplicativo : System.Web.UI.Page
     {
         private int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                CargarEstados();
+            if(!IsPostBack){
+                CargarTipoAplicatvos();
                 this.tabla.Visible = true;
                 this.formulario.Visible = false;
             }
         }
 
-        private void CargarEstados()
+        private void CargarTipoAplicatvos()
         {
             using (proyecto_finalEntities entidades = new proyecto_finalEntities())
             {
-                var roles = entidades.Estados.ToList<Estado>();
-                gvEstados.DataSource = roles;
-                gvEstados.DataBind();
+                var ta = entidades.Tipo_aplicativo.ToList<Tipo_aplicativo>();
+                gvTipoAplicativo.DataSource = ta;
+                gvTipoAplicativo.DataBind();
             }
         }
 
-        public void limpiar()
-        {
-            txtNombre.Text = "";
-            txtDescripcion.Text = "";
-            txtId.Text = "0";
-            ddlActivo.SelectedValue = "1";
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -52,31 +41,31 @@ namespace ticket_tracker
 
                     if (id == 0)
                     {
-                        entidades.Estados.Add(new Estado
-                        { 
+                        entidades.Tipo_aplicativo.Add(new Tipo_aplicativo
+                        {
                             Nombre = txtNombre.Text,
                             Descripcion = txtDescripcion.Text,
-                            Estado1 = Convert.ToBoolean(ddlActivo.SelectedItem.Value)
+                            Estado = Convert.ToBoolean(ddlEstado.SelectedItem.Value)
                         });
                         entidades.SaveChanges();
                         LblMessage.Text = "Registro Insertado Satisfactoriamente.";
-                        CargarEstados();
+                        CargarTipoAplicatvos();
                         this.tabla.Visible = true;
                         this.formulario.Visible = false;
                         this.btnNuevo.Visible = true;
                     }
                     else
                     {
-                        Estado estado = entidades.Estados.SingleOrDefault(c => c.Id == id);
+                        Tipo_aplicativo estado = entidades.Tipo_aplicativo.SingleOrDefault(c => c.Id == id);
 
-                       
+
                         estado.Nombre = txtNombre.Text;
                         estado.Descripcion = txtDescripcion.Text;
-                        estado.Estado1 = Convert.ToBoolean(ddlActivo.SelectedItem.Value);
+                        estado.Estado = Convert.ToBoolean(ddlEstado.SelectedItem.Value);
 
                         entidades.SaveChanges();
                         LblMessage.Text = "Registro Actualizado Satisfactoriamente.";
-                        CargarEstados();
+                        CargarTipoAplicatvos();
                         this.tabla.Visible = true;
                         this.formulario.Visible = false;
                         this.btnNuevo.Visible = true;
@@ -90,7 +79,7 @@ namespace ticket_tracker
             }
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
+        protected void btnNuevo_Click(object sender, EventArgs e)
         {
             this.tabla.Visible = false;
             this.formulario.Visible = true;
@@ -98,7 +87,7 @@ namespace ticket_tracker
             limpiar();
         }
 
-        protected void txtCerrar_Click(object sender, EventArgs e)
+        protected void btnCancelar_Click(object sender, EventArgs e)
         {
             this.tabla.Visible = true;
             this.formulario.Visible = false;
@@ -106,21 +95,29 @@ namespace ticket_tracker
             limpiar();
         }
 
-        protected void gvEstados_RowCommand(object sender, GridViewCommandEventArgs e)
+        public void limpiar()
+        {
+            txtNombre.Text = "";
+            txtDescripcion.Text = "";
+            txtId.Text = "0";
+            ddlEstado.SelectedValue = "1";
+        }
+
+        protected void gvTipoAplicativo_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Del")
             {
                 try
                 {
                     int rowIndex = Convert.ToInt32(e.CommandArgument);
-                    int id = Convert.ToInt32(gvEstados.Rows[rowIndex].Cells[0].Text);
+                    int id = Convert.ToInt32(gvTipoAplicativo.Rows[rowIndex].Cells[0].Text);
 
                     using (proyecto_finalEntities entidades = new proyecto_finalEntities())
                     {
-                        Estado estado = entidades.Estados.SingleOrDefault(c => c.Id == id);
-                        entidades.Estados.Remove(estado);
+                        Tipo_aplicativo ta = entidades.Tipo_aplicativo.SingleOrDefault(c => c.Id == id);
+                        entidades.Tipo_aplicativo.Remove(ta);
                         entidades.SaveChanges();
-                        CargarEstados();
+                        CargarTipoAplicatvos();
                     }
                 }
                 catch (Exception sqlEx)
@@ -134,15 +131,16 @@ namespace ticket_tracker
                 try
                 {
                     int rowIndex = Convert.ToInt32(e.CommandArgument);
-                    int id = Convert.ToInt32(gvEstados.Rows[rowIndex].Cells[0].Text);
+                    int id = Convert.ToInt32(gvTipoAplicativo.Rows[rowIndex].Cells[0].Text);
 
                     using (proyecto_finalEntities entidades = new proyecto_finalEntities())
                     {
-                        Estado estado = entidades.Estados.SingleOrDefault(c => c.Id == id);
+                        Tipo_aplicativo estado = entidades.Tipo_aplicativo.SingleOrDefault(c => c.Id == id);
 
                         txtId.Text = Convert.ToString(estado.Id);
                         txtNombre.Text = estado.Nombre;
                         txtDescripcion.Text = estado.Descripcion;
+                        ddlEstado.SelectedValue = Convert.ToString(estado.Estado).ToLower();
                         this.tabla.Visible = false;
                         this.formulario.Visible = true;
                         this.btnNuevo.Visible = false;
@@ -156,7 +154,7 @@ namespace ticket_tracker
             }
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void btnLimpiar_Click(object sender, EventArgs e)
         {
             limpiar();
         }
