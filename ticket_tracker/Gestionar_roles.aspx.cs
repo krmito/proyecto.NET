@@ -10,9 +10,11 @@ namespace ticket_tracker
 {
     public partial class Gestionar_roles : System.Web.UI.Page
     {
+        private int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack){
+                txtId.Text = Convert.ToString(id);
                 cargarEstados();
                 CargarRoles();
                 this.tabla.Visible = true;

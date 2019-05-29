@@ -14,6 +14,7 @@ namespace ticket_tracker
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack){
+                txtId.Text = Convert.ToString(id);
                 CargarTipoAplicatvos();
                 this.tabla.Visible = true;
                 this.formulario.Visible = false;

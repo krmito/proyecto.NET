@@ -48,6 +48,7 @@
                                 <asp:MenuItem Text="Gestionar prioridades" Value="prioridades" NavigateUrl="~/Gestionar_prioridades.aspx"></asp:MenuItem>
                                 <asp:MenuItem Text="Gestionar Tipo aplicativo" Value="tipo_aplicativo" NavigateUrl="~/Gestionar_tipo_aplicativo.aspx"></asp:MenuItem>
                                 <asp:MenuItem Text="Gestionar usuarios" Value="usuarios" NavigateUrl="~/Gestionar_usuarios.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Asignar aplicativos" Value="asignarAplicativo" NavigateUrl="~/AsignarAplicaciones.aspx"></asp:MenuItem>
                             </asp:MenuItem>
                             <asp:MenuItem Text="Salir" Value="SALIR"></asp:MenuItem>
                         </Items>

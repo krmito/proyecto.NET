@@ -55,7 +55,7 @@
             <td class="auto-style2">
                 <asp:DropDownList ID="ddlActivo" runat="server" Height="16px" Width="289px">
                     <asp:ListItem Value="1">--Selecciona--</asp:ListItem>
-                    <asp:ListItem Value="True">Activo</asp:ListItem>
+                    <asp:ListItem Value="true">Activo</asp:ListItem>
                     <asp:ListItem Value="false">Inactivo</asp:ListItem>
                 </asp:DropDownList>
             </td>
