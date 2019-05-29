@@ -65,6 +65,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AsignarAplicaciones.aspx" />
     <Content Include="Gestionar_aplicativos.aspx" />
     <Content Include="Gestionar_estados.aspx" />
     <Content Include="Gestionar_incidencias.aspx" />
@@ -125,6 +126,13 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsignarAplicaciones.aspx.cs">
+      <DependentUpon>AsignarAplicaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AsignarAplicaciones.aspx.designer.cs">
+      <DependentUpon>AsignarAplicaciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Gestionar_aplicativos.aspx.cs">
       <DependentUpon>Gestionar_aplicativos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

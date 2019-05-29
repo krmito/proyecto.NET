@@ -11,7 +11,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Getionar aplicativos</h1>
-    <p>&nbsp;</p>
+    <p>
+        <asp:Label ID="LblMessage" runat="server"></asp:Label>
+    </p>
+    <p>
+        <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" OnClick="btnNuevo_Click" />
+    </p>
+
+<div id="formulario" runat="server">
     <table class="nav-justified">
         <tr>
             <td>
@@ -32,7 +39,7 @@
                 <asp:Label ID="Label4" runat="server" Text="Descripción:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="txtDescripcion" runat="server" Width="246px"></asp:TextBox>
+                <asp:TextBox ID="txtDescripcion" runat="server" Width="250px" Height="54px" TextMode="MultiLine"></asp:TextBox>
             </td>
             <td>&nbsp;</td>
         </tr>
@@ -46,7 +53,7 @@
                 <asp:Label ID="Label5" runat="server" Text="Tipo:"></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="ddlTipo" runat="server" Height="16px" Width="255px">
+                <asp:DropDownList ID="ddlTipo" runat="server" Height="16px" Width="255px" DataTextField="Nombre" DataValueField="Id" AutoPostBack="True">
                 </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
@@ -61,7 +68,7 @@
                 <asp:Label ID="Label6" runat="server" Text="Estado:"></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="ddlEstado" runat="server" Height="16px" Width="254px">
+                <asp:DropDownList ID="ddlEstado" runat="server" Height="16px" Width="254px" DataTextField="Nombre" DataValueField="Id">
                 </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
@@ -72,12 +79,38 @@
             <td class="auto-style3"></td>
         </tr>
         <tr>
-            <td class="auto-style2"></td>
             <td class="auto-style2">
-                <asp:Button ID="Button1" runat="server" Text="Guardar" />
-                <asp:Button ID="Button2" runat="server" Text="Limpiar" />
+                <asp:TextBox ID="txtId" runat="server"></asp:TextBox>
+            </td>
+            <td class="auto-style2">
+                <asp:Button ID="Button1" runat="server" Text="Guardar" OnClick="Button1_Click" />
+                <asp:Button ID="Button2" runat="server" Text="Limpiar" OnClick="Button2_Click" />
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
             </td>
             <td class="auto-style2"></td>
         </tr>
     </table>
+</div>
+
+     <div id="tabla" runat="server">
+
+
+
+
+         <asp:GridView ID="gvAplicativos" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
+             <Columns>
+                 <asp:BoundField HeaderText="ID" DataField="Id" />
+                 <asp:BoundField HeaderText="NOMBRE" DataField="Nombre" />
+                 <asp:BoundField HeaderText="DESCRIPCION" DataField="Descrpcion" />
+                 <asp:BoundField DataField="Estado.Nombre" HeaderText="ESTADO" />
+                 <asp:BoundField HeaderText="TIPO" DataField="Tipo_aplicativo.Nombre" />
+                 <asp:ButtonField CommandName="Upd" Text="Editar" />
+                 <asp:ButtonField CommandName="Del" Text="Eliminar" />
+             </Columns>
+         </asp:GridView>
+
+
+
+
+     </div>
 </asp:Content>

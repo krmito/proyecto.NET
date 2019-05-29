@@ -17,3 +17,4 @@ C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NE
 C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\bin\EntityFramework.SqlServer.xml
 C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\obj\Debug\ticket_tracker.dll
 C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\obj\Debug\ticket_tracker.pdb
+C:\Users\KrlosPS4\Documents\Visual Studio 2013\Projects\proyecto.NET\proyecto.NET\ticket_tracker\obj\Debug\ticket_tracker.csprojResolveAssemblyReference.cache

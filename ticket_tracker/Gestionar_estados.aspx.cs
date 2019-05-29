@@ -18,6 +18,7 @@ namespace ticket_tracker
             if (!IsPostBack)
             {
                 CargarEstados();
+                txtId.Text = Convert.ToString(id);
                 this.tabla.Visible = true;
                 this.formulario.Visible = false;
             }
