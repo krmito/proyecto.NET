@@ -76,6 +76,7 @@
         <EntityType Name="Usuarios_aplicativos">
           <Key>
             <PropertyRef Name="Id_usuario" />
+            <PropertyRef Name="Id_aplicativo" />
           </Key>
           <Property Name="Id_usuario" Type="int" Nullable="false" />
           <Property Name="Id_aplicativo" Type="int" Nullable="false" />
@@ -166,7 +167,7 @@
         </Association>
         <Association Name="FK_Table_To_usuarios">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="Usuarios_aplicativos" Type="Self.Usuarios_aplicativos" Multiplicity="0..1" />
+          <End Role="Usuarios_aplicativos" Type="Self.Usuarios_aplicativos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="Id" />
@@ -437,7 +438,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Usuarios_aplicativos">
-          <End Role="Aplicativos" Type="Self.Aplicativo" Multiplicity="0..1" />
+          <End Role="Aplicativos" Type="Self.Aplicativo" Multiplicity="*" >
+          </End>
           <End Role="Usuarios" Type="Self.Usuario" Multiplicity="*" />
         </Association>
         <EntityContainer Name="proyecto_finalEntities" annotation:LazyLoadingEnabled="true">
@@ -566,12 +568,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Usuarios_aplicativos" TypeName="proyecto_finalModel.Usuarios_aplicativos" StoreEntitySet="Usuarios_aplicativos">
-            <EndProperty Name="Aplicativos">
-              <ScalarProperty Name="Id" ColumnName="Id_aplicativo" />
-            </EndProperty>
+          <AssociationSetMapping Name="Usuarios_aplicativos" TypeName="proyecto_finalModel.Usuarios_aplicativos" StoreEntitySet="Usuarios_aplicativos" >
             <EndProperty Name="Usuarios">
               <ScalarProperty Name="Id" ColumnName="Id_usuario" />
+            </EndProperty>
+            <EndProperty Name="Aplicativos">
+              <ScalarProperty Name="Id" ColumnName="Id_aplicativo" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

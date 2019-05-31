@@ -4,18 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ticket_tracker.Modelos;
 
 namespace ticket_tracker
 {
-    public partial class Site1 : System.Web.UI.MasterPage
+    public partial class Principal_2 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack){
-                var dt = (Usuario)Session["USUARIO"];
-                LblUsuario.Text = dt.NombreUsuario;
-            }
+
         }
     }
 }

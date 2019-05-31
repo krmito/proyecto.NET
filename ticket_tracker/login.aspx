@@ -45,7 +45,7 @@
                     <table align="center" class="auto-style3">
                         <tr>
                             <td class="auto-style4">
-                                <asp:Login ID="Login1" runat="server" DestinationPageUrl="~/Principal.aspx" Font-Names="Verdana" OnAuthenticate="Login1_Authenticate" style="width: 284px" Width="282px" BackColor="#F7F7DE" BorderColor="#CCCC99" BorderStyle="Solid" BorderWidth="1px" Font-Size="10pt" PasswordLabelText="Contraseña:" RememberMeText="Recordarme" TitleText="Iniciar sesión" UserNameLabelText="Nombre de usuario:">
+                                <asp:Login ID="Login1" runat="server"  Font-Names="Verdana" OnAuthenticate="Login1_Authenticate" style="width: 284px" Width="282px" BackColor="#F7F7DE" BorderColor="#CCCC99" BorderStyle="Solid" BorderWidth="1px" Font-Size="10pt" PasswordLabelText="Contraseña:" RememberMeText="Recordarme" TitleText="Iniciar sesión" UserNameLabelText="Nombre de usuario:">
                                     <TitleTextStyle BackColor="#6B696B" Font-Bold="True" ForeColor="#FFFFFF" />
                                 </asp:Login>
                             </td>

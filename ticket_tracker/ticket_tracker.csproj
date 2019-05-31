@@ -74,6 +74,7 @@
     <Content Include="Gestionar_tipo_aplicativo.aspx" />
     <Content Include="Gestionar_usuarios.aspx" />
     <Content Include="master_page.Master" />
+    <Content Include="Master_Soporte.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -117,6 +118,7 @@
       <LastGenOutput>final.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Principal-2.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -192,6 +194,13 @@
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Master_Soporte.Master.cs">
+      <DependentUpon>Master_Soporte.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master_Soporte.Master.designer.cs">
+      <DependentUpon>Master_Soporte.Master</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Aplicativo.cs">
       <DependentUpon>final.tt</DependentUpon>
     </Compile>
@@ -228,6 +237,13 @@
     <Compile Include="Modelos\Usuario.cs">
       <DependentUpon>final.tt</DependentUpon>
     </Compile>
+    <Compile Include="Principal-2.aspx.cs">
+      <DependentUpon>Principal-2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Principal-2.aspx.designer.cs">
+      <DependentUpon>Principal-2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -243,6 +259,7 @@
     <Compile Include="master_page.Master.designer.cs">
       <DependentUpon>master_page.Master</DependentUpon>
     </Compile>
+    <Compile Include="Usuario_aplicativo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

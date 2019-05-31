@@ -17,6 +17,7 @@ namespace ticket_tracker.Modelos
         public Usuario()
         {
             this.Incidencias = new HashSet<Incidencia>();
+            this.Aplicativo = new HashSet<Aplicativo>();
         }
     
         public int Id { get; set; }
@@ -30,6 +31,6 @@ namespace ticket_tracker.Modelos
         public virtual Estado Estado { get; set; }
         public virtual ICollection<Incidencia> Incidencias { get; set; }
         public virtual Role Role { get; set; }
-        public virtual Aplicativo Aplicativo { get; set; }
+        public virtual ICollection<Aplicativo> Aplicativo { get; set; }
     }
 }

@@ -183,7 +183,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="Usuarios_aplicativos">
-    <End Role="Aplicativos" Type="Self.Aplicativo" Multiplicity="0..1" />
+    <End Role="Aplicativos" Type="Self.Aplicativo" Multiplicity="*" />
     <End Role="Usuarios" Type="Self.Usuario" Multiplicity="*" />
   </Association>
   <EntityContainer Name="proyecto_finalEntities" annotation:LazyLoadingEnabled="true">

@@ -77,11 +77,11 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <AssociationSetMapping Name="Usuarios_aplicativos" TypeName="proyecto_finalModel.Usuarios_aplicativos" StoreEntitySet="Usuarios_aplicativos">
-      <EndProperty Name="Aplicativos">
-        <ScalarProperty Name="Id" ColumnName="Id_aplicativo" />
-      </EndProperty>
       <EndProperty Name="Usuarios">
         <ScalarProperty Name="Id" ColumnName="Id_usuario" />
+      </EndProperty>
+      <EndProperty Name="Aplicativos">
+        <ScalarProperty Name="Id" ColumnName="Id_aplicativo" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
