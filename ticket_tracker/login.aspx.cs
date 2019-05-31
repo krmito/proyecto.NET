@@ -26,9 +26,21 @@ namespace ticket_tracker
                                 .FirstOrDefault<Usuario>();
                 if (usuario != null)
                 {
-                    autenticado = true;
-                    Session.Add("USUARIO", usuario);
-                    e.Authenticated = autenticado;
+                    if (usuario.Id_rol == 2)
+                    {
+                        autenticado = true;
+                        Session.Add("USUARIO", usuario);
+                        e.Authenticated = autenticado;
+                        Response.Redirect("Principal.aspx");
+                    }
+                    else if (usuario.Id_rol == 1003)
+                    {
+                        autenticado = true;
+                        Session.Add("USUARIO", usuario);
+                        e.Authenticated = autenticado;
+                        Response.Redirect("Principal-2.aspx");
+                    }
+                    
                 }
 
             }

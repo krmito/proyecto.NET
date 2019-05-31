@@ -8,11 +8,12 @@ using ticket_tracker.Modelos;
 
 namespace ticket_tracker
 {
-    public partial class Site1 : System.Web.UI.MasterPage
+    public partial class Master_Soporte : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack){
+            if (!IsPostBack)
+            {
                 var dt = (Usuario)Session["USUARIO"];
                 LblUsuario.Text = dt.NombreUsuario;
             }
