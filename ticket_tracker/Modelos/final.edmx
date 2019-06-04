@@ -34,6 +34,8 @@
           <Property Name="Descripcion" Type="nchar" MaxLength="300" />
           <Property Name="Fecha_estimada" Type="datetime" Nullable="false" />
           <Property Name="Id_prioridad" Type="int" Nullable="false" />
+          <Property Name="Id_estado" Type="int" Nullable="false" />
+          <Property Name="Id_incidencia_papa" Type="int" />
         </EntityType>
         <EntityType Name="Prioridad">
           <Key>
@@ -114,6 +116,18 @@
             </Principal>
             <Dependent Role="Incidencias">
               <PropertyRef Name="Id_aplicativo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencias_To_incidencias">
+          <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="0..1" />
+          <End Role="Incidencias1" Type="Self.Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incidencias">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidencias1">
+              <PropertyRef Name="Id_incidencia_papa" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -222,6 +236,10 @@
             <End Role="Aplicativos" EntitySet="Aplicativos" />
             <End Role="Incidencias" EntitySet="Incidencias" />
           </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_To_incidencias" Association="Self.FK_Incidencias_To_incidencias">
+            <End Role="Incidencias" EntitySet="Incidencias" />
+            <End Role="Incidencias1" EntitySet="Incidencias" />
+          </AssociationSet>
           <AssociationSet Name="FK_Incidencias_To_prioridades" Association="Self.FK_Incidencias_To_prioridades">
             <End Role="Prioridad" EntitySet="Prioridad" />
             <End Role="Incidencias" EntitySet="Incidencias" />
@@ -294,6 +312,10 @@
           <NavigationProperty Name="Aplicativo" Relationship="Self.FK_Incidencias_To_aplicativos" FromRole="Incidencias" ToRole="Aplicativos" />
           <NavigationProperty Name="Prioridad" Relationship="Self.FK_Incidencias_To_prioridades" FromRole="Incidencias" ToRole="Prioridad" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Incidencias_To_usuarios" FromRole="Incidencias" ToRole="Usuarios" />
+          <Property Name="Id_estado" Type="Int32" Nullable="false" />
+          <Property Name="Id_incidencia_papa" Type="Int32" />
+          <NavigationProperty Name="Incidencias1" Relationship="proyecto_finalModel.FK_Incidencias_To_incidencias" FromRole="Incidencia" ToRole="Incidencia1" />
+          <NavigationProperty Name="Incidencia1" Relationship="proyecto_finalModel.FK_Incidencias_To_incidencias" FromRole="Incidencia1" ToRole="Incidencia" />
         </EntityType>
         <EntityType Name="Prioridad">
           <Key>
@@ -486,7 +508,23 @@
             <End Role="Aplicativos" EntitySet="Aplicativos" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_To_incidencias" Association="proyecto_finalModel.FK_Incidencias_To_incidencias">
+            <End Role="Incidencia" EntitySet="Incidencias" />
+            <End Role="Incidencia1" EntitySet="Incidencias" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Incidencias_To_incidencias">
+          <End Type="proyecto_finalModel.Incidencia" Role="Incidencia" Multiplicity="0..1" />
+          <End Type="proyecto_finalModel.Incidencia" Role="Incidencia1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Incidencia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidencia1">
+              <PropertyRef Name="Id_incidencia_papa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -517,6 +555,8 @@
           <EntitySetMapping Name="Incidencias">
             <EntityTypeMapping TypeName="proyecto_finalModel.Incidencia">
               <MappingFragment StoreEntitySet="Incidencias">
+                <ScalarProperty Name="Id_incidencia_papa" ColumnName="Id_incidencia_papa" />
+                <ScalarProperty Name="Id_estado" ColumnName="Id_estado" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Id_aplicativo" ColumnName="Id_aplicativo" />
                 <ScalarProperty Name="Id_usuario" ColumnName="Id_usuario" />

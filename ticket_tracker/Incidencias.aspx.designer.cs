@@ -10,7 +10,7 @@
 namespace ticket_tracker {
     
     
-    public partial class Gestionar_incidencias {
+    public partial class Incidencias {
         
         /// <summary>
         /// LblMessage control.
@@ -20,15 +20,6 @@ namespace ticket_tracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblMessage;
-        
-        /// <summary>
-        /// btnNuevo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNuevo;
         
         /// <summary>
         /// formulario control.
@@ -130,13 +121,13 @@ namespace ticket_tracker {
         protected global::System.Web.UI.WebControls.Label Label8;
         
         /// <summary>
-        /// ddlEstado control.
+        /// ddlEstados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstados;
         
         /// <summary>
         /// txtId control.
@@ -155,15 +146,6 @@ namespace ticket_tracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardar;
-        
-        /// <summary>
-        /// tnLimpiar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button tnLimpiar;
         
         /// <summary>
         /// btnCancelar control.

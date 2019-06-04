@@ -39,7 +39,7 @@
                         <DynamicSelectedStyle BackColor="#FFCC66" />
                         <Items>
                             <asp:MenuItem Selectable="False" Text="Gestion de incidencias" Value="incidencias">
-                                <asp:MenuItem Text="Registrar inicidencia" Value="reg_incidencia" NavigateUrl="~/Gestionar_incidencias.aspx"></asp:MenuItem>
+                                
                             </asp:MenuItem>
                             <asp:MenuItem Text="Administración" Value="Administración" Selectable="False">
                                 <asp:MenuItem Text="Gestionar roles" Value="roles" NavigateUrl="~/Gestionar_roles.aspx"></asp:MenuItem>
@@ -48,9 +48,8 @@
                                 <asp:MenuItem Text="Gestionar prioridades" Value="prioridades" NavigateUrl="~/Gestionar_prioridades.aspx"></asp:MenuItem>
                                 <asp:MenuItem Text="Gestionar Tipo aplicativo" Value="tipo_aplicativo" NavigateUrl="~/Gestionar_tipo_aplicativo.aspx"></asp:MenuItem>
                                 <asp:MenuItem Text="Gestionar usuarios" Value="usuarios" NavigateUrl="~/Gestionar_usuarios.aspx"></asp:MenuItem>
-                                <asp:MenuItem Text="Asignar aplicativos" Value="asignarAplicativo" NavigateUrl="~/AsignarAplicaciones.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Registrar inicidencia" Value="reg_incidencia" NavigateUrl="~/Gestionar_incidencias.aspx"></asp:MenuItem>
                             </asp:MenuItem>
-                            <asp:MenuItem Text="Salir" Value="SALIR"></asp:MenuItem>
                         </Items>
                         <StaticHoverStyle BackColor="#990000" ForeColor="White" />
                         <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
@@ -60,6 +59,7 @@
                             <td>
                                 <asp:Label ID="Label2" runat="server" Font-Names="Calibri" ForeColor="#99CCFF" Text="Bienvenido: "></asp:Label>
                                 <asp:Label ID="LblUsuario" runat="server" Font-Bold="True" Font-Names="Calibri" Font-Size="Small" ForeColor="#99CCFF"></asp:Label>
+                                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Salir" />
                             </td>
                         </tr>
                     </table>

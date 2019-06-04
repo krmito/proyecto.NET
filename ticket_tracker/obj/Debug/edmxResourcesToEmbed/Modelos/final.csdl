@@ -39,6 +39,10 @@
     <NavigationProperty Name="Aplicativo" Relationship="Self.FK_Incidencias_To_aplicativos" FromRole="Incidencias" ToRole="Aplicativos" />
     <NavigationProperty Name="Prioridad" Relationship="Self.FK_Incidencias_To_prioridades" FromRole="Incidencias" ToRole="Prioridad" />
     <NavigationProperty Name="Usuario" Relationship="Self.FK_Incidencias_To_usuarios" FromRole="Incidencias" ToRole="Usuarios" />
+    <Property Name="Id_estado" Type="Int32" Nullable="false" />
+    <Property Name="Id_incidencia_papa" Type="Int32" />
+    <NavigationProperty Name="Incidencias1" Relationship="proyecto_finalModel.FK_Incidencias_To_incidencias" FromRole="Incidencia" ToRole="Incidencia1" />
+    <NavigationProperty Name="Incidencia1" Relationship="proyecto_finalModel.FK_Incidencias_To_incidencias" FromRole="Incidencia1" ToRole="Incidencia" />
   </EntityType>
   <EntityType Name="Prioridad">
     <Key>
@@ -230,5 +234,21 @@
       <End Role="Aplicativos" EntitySet="Aplicativos" />
       <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>
+    <AssociationSet Name="FK_Incidencias_To_incidencias" Association="proyecto_finalModel.FK_Incidencias_To_incidencias">
+      <End Role="Incidencia" EntitySet="Incidencias" />
+      <End Role="Incidencia1" EntitySet="Incidencias" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_Incidencias_To_incidencias">
+    <End Type="proyecto_finalModel.Incidencia" Role="Incidencia" Multiplicity="0..1" />
+    <End Type="proyecto_finalModel.Incidencia" Role="Incidencia1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Incidencia">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Incidencia1">
+        <PropertyRef Name="Id_incidencia_papa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

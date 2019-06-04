@@ -29,6 +29,8 @@
     <Property Name="Descripcion" Type="nchar" MaxLength="300" />
     <Property Name="Fecha_estimada" Type="datetime" Nullable="false" />
     <Property Name="Id_prioridad" Type="int" Nullable="false" />
+    <Property Name="Id_estado" Type="int" Nullable="false" />
+    <Property Name="Id_incidencia_papa" Type="int" />
   </EntityType>
   <EntityType Name="Prioridad">
     <Key>
@@ -109,6 +111,18 @@
       </Principal>
       <Dependent Role="Incidencias">
         <PropertyRef Name="Id_aplicativo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Incidencias_To_incidencias">
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="0..1" />
+    <End Role="Incidencias1" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Incidencias">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Incidencias1">
+        <PropertyRef Name="Id_incidencia_papa" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -216,6 +230,10 @@
     <AssociationSet Name="FK_Incidencias_To_aplicativos" Association="Self.FK_Incidencias_To_aplicativos">
       <End Role="Aplicativos" EntitySet="Aplicativos" />
       <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Incidencias_To_incidencias" Association="Self.FK_Incidencias_To_incidencias">
+      <End Role="Incidencias" EntitySet="Incidencias" />
+      <End Role="Incidencias1" EntitySet="Incidencias" />
     </AssociationSet>
     <AssociationSet Name="FK_Incidencias_To_prioridades" Association="Self.FK_Incidencias_To_prioridades">
       <End Role="Prioridad" EntitySet="Prioridad" />

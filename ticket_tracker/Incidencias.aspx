@@ -1,16 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master_page.Master" AutoEventWireup="true" CodeBehind="Gestionar_incidencias.aspx.cs" Inherits="ticket_tracker.Gestionar_incidencias" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Soporte.Master" AutoEventWireup="true" CodeBehind="Incidencias.aspx.cs" Inherits="ticket_tracker.Incidencias" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head1" runat="server">
     <style type="text/css">
-        .auto-style2 {
-            height: 20px;
-        }
-    </style>
+    .auto-style2 {
+        height: 20px;
+    }
+</style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+    
         <asp:Label ID="LblMessage" runat="server"></asp:Label>
-        <br />
-        <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" OnClick="btnNuevo_Click" />
         <br />
      <div id="formulario" runat="server">
         <table class="auto-style1">
@@ -19,7 +17,7 @@
                     <asp:Label ID="Label3" runat="server" Text="Aplicativo:"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlAplicativo" runat="server" Height="16px" Width="219px" DataTextField="Nombre" DataValueField="Id">
+                    <asp:DropDownList ID="ddlAplicativo" runat="server" Height="16px" Width="219px" DataTextField="Nombre" DataValueField="Id" Enabled="False">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
@@ -34,7 +32,7 @@
                     <asp:Label ID="Label4" runat="server" Text="Asignado a:"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlAsignadoA" runat="server" Height="16px" Width="218px" DataTextField="Nombre" DataValueField="Id">
+                    <asp:DropDownList ID="ddlAsignadoA" runat="server" Height="16px" Width="218px" DataTextField="Nombre" DataValueField="Id" Enabled="False">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
@@ -63,7 +61,7 @@
                     <asp:Label ID="Label7" runat="server" Text="Fecha de asignación:"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtFecha" runat="server" Height="16px" TextMode="Date" Width="209px"></asp:TextBox>
+                    <asp:TextBox ID="txtFecha" runat="server" Height="16px" TextMode="Date" Width="209px" Enabled="False"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -75,7 +73,7 @@
             <tr>
                 <td>Prioridad</td>
                 <td>
-                    <asp:DropDownList ID="ddlPrioridad" runat="server" Height="18px" Width="217px" DataTextField="Nombre" DataValueField="Id">
+                    <asp:DropDownList ID="ddlPrioridad" runat="server" Height="18px" Width="217px" DataTextField="Nombre" DataValueField="Id" Enabled="False">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
@@ -88,26 +86,25 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label8" runat="server" Text="Estado:"></asp:Label>
+                    <asp:Label ID="Label8" runat="server" Text="Estados"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="ddlEstado" runat="server" DataTextField="Nombre" DataValueField="Id" Height="16px" Width="218px">
+                    <asp:DropDownList ID="ddlEstados" runat="server" Height="16px" Width="217px" DataTextField="Nombre" DataValueField="Id">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>
-                    <asp:TextBox ID="txtId" runat="server" Visible="False"></asp:TextBox>
-                </td>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:TextBox ID="txtId" runat="server"></asp:TextBox>
+                </td>
                 <td>
                     <asp:Button ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar" />
-                    <asp:Button ID="tnLimpiar" runat="server" Text="Limpiar" />
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" />
                 </td>
                 <td>&nbsp;</td>
@@ -124,7 +121,8 @@
                 <asp:BoundField DataField="Descripcion" HeaderText="DESCRIPCION" />
                 <asp:BoundField DataField="Fecha_estimada" HeaderText="FECHA ESTIMADA" />
                 <asp:BoundField DataField="Prioridad.Nombre" HeaderText="PRIORIDAD" />
-                <asp:ButtonField CommandName="Upd" Text="Editar" />
+                <asp:BoundField DataField="Id_incidencia_papa" HeaderText="ID INCIDENCIA PAPÁ" />
+                <asp:ButtonField CommandName="Upd" Text="Gestionar" />
                 <asp:ButtonField CommandName="Del" Text="Elimimar" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" />

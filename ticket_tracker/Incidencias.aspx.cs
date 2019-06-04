@@ -8,12 +8,13 @@ using ticket_tracker.Modelos;
 
 namespace ticket_tracker
 {
-    public partial class Gestionar_incidencias : System.Web.UI.Page
+    public partial class Incidencias : System.Web.UI.Page
     {
         private int id = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack){
+            if (!IsPostBack)
+            {
                 txtId.Text = Convert.ToString(id);
                 this.tabla.Visible = true;
                 this.formulario.Visible = false;
@@ -29,7 +30,10 @@ namespace ticket_tracker
         {
             using (proyecto_finalEntities entidades = new proyecto_finalEntities())
             {
-                var incidencias = entidades.Incidencias.ToList<Incidencia>();
+                var dt = (Usuario)Session["USUARIO"];
+                var incidencias = entidades.Incidencias
+                    .Where(s => s.Id_usuario == dt.Id)
+                    .ToList<Incidencia>();
                 gvIncidencias.DataSource = incidencias;
                 gvIncidencias.DataBind();
             }
@@ -45,13 +49,14 @@ namespace ticket_tracker
             }
         }
 
+
         private void CargarEstados()
         {
             using (proyecto_finalEntities entidades = new proyecto_finalEntities())
             {
                 var estados = entidades.Estados.ToList<Estado>();
-                ddlEstado.DataSource = estados;
-                ddlEstado.DataBind();
+                ddlEstados.DataSource = estados;
+                ddlEstados.DataBind();
             }
         }
 
@@ -84,42 +89,20 @@ namespace ticket_tracker
                 {
                     var id = Convert.ToInt32(txtId.Text);
 
-                    if (id == 0)
+                    entidades.Incidencias.Add(new Incidencia
                     {
-                        entidades.Incidencias.Add(new Incidencia
-                        {
-                            Id_aplicativo = Convert.ToInt32(ddlAplicativo.SelectedItem.Value),
-                            Id_usuario = Convert.ToInt32(ddlAsignadoA.SelectedItem.Value),
-                            Descripcion = txtDescripcion.Text,
-                            Fecha_estimada = Convert.ToDateTime(txtFecha.Text),
-                            Id_prioridad = Convert.ToInt32(ddlPrioridad.SelectedItem.Value)
-                        });
-                        entidades.SaveChanges();
-                        LblMessage.Text = "Registro Insertado Satisfactoriamente.";
-                        CargarIncidencias();
-                        this.tabla.Visible = true;
-                        this.formulario.Visible = false;
-                        this.btnNuevo.Visible = true;
-                    }
-                    else
-                    {
-                        Incidencia incidencias = entidades.Incidencias.SingleOrDefault(c => c.Id == id);
-
-
-                        incidencias.Id_aplicativo = Convert.ToInt32(ddlAplicativo.SelectedItem.Value);
-                        incidencias.Id_usuario = Convert.ToInt32(ddlAsignadoA.SelectedItem.Value);
-                        incidencias.Descripcion = txtDescripcion.Text;
-                        incidencias.Fecha_estimada = Convert.ToDateTime(txtFecha.Text);
-                        incidencias.Id_prioridad = Convert.ToInt32(ddlPrioridad.SelectedItem.Value);
-
-                        entidades.SaveChanges();
-                        LblMessage.Text = "Registro Actualizado Satisfactoriamente.";
-                        CargarIncidencias();
-                        this.tabla.Visible = true;
-                        this.formulario.Visible = false;
-                        this.btnNuevo.Visible = true;
-                    }
-
+                        Id_aplicativo = Convert.ToInt32(ddlAplicativo.SelectedItem.Value),
+                        Id_usuario = Convert.ToInt32(ddlAsignadoA.SelectedItem.Value),
+                        Descripcion = txtDescripcion.Text,
+                        Fecha_estimada = Convert.ToDateTime(txtFecha.Text),
+                        Id_prioridad = Convert.ToInt32(ddlPrioridad.SelectedItem.Value),
+                        Id_incidencia_papa = Convert.ToInt32(txtId.Text)
+                    });
+                    entidades.SaveChanges();
+                    LblMessage.Text = "Registro Insertado Satisfactoriamente.";
+                    CargarIncidencias();
+                    this.tabla.Visible = true;
+                    this.formulario.Visible = false; 
                 }
             }
             catch (Exception sqlEx)
@@ -131,15 +114,13 @@ namespace ticket_tracker
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             this.tabla.Visible = true;
-            this.formulario.Visible = false;
-            this.btnNuevo.Visible = true;
+            this.formulario.Visible = false; 
         }
 
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
             this.tabla.Visible = false;
             this.formulario.Visible = true;
-            this.btnNuevo.Visible = false;
         }
 
         protected void gvIncidencias_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -182,10 +163,9 @@ namespace ticket_tracker
                         ddlPrioridad.SelectedItem.Value = Convert.ToString(incidencias.Id_aplicativo);
                         txtDescripcion.Text = Convert.ToString(incidencias.Descripcion);
                         txtFecha.Text = Convert.ToString(incidencias.Fecha_estimada);
-                        
+
                         this.tabla.Visible = false;
-                        this.formulario.Visible = true;
-                        this.btnNuevo.Visible = false;
+                        this.formulario.Visible = true; 
                         entidades.SaveChanges();
                     }
                 }
