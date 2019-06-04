@@ -15,7 +15,19 @@ namespace ticket_tracker
             if(!IsPostBack){
                 var dt = (Usuario)Session["USUARIO"];
                 LblUsuario.Text = dt.NombreUsuario;
-            }
+            }   
+        }
+
+
+        public void cerrarSesion()
+        {
+            Session.Contents.RemoveAll();
+            Response.Redirect("login.aspx");
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            cerrarSesion();
         }
     }
 }

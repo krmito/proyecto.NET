@@ -73,6 +73,7 @@
     <Content Include="Gestionar_roles.aspx" />
     <Content Include="Gestionar_tipo_aplicativo.aspx" />
     <Content Include="Gestionar_usuarios.aspx" />
+    <Content Include="Incidencias.aspx" />
     <Content Include="master_page.Master" />
     <Content Include="Master_Soporte.Master" />
     <None Include="Web.Debug.config">
@@ -186,6 +187,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Incidencias.aspx.cs">
+      <DependentUpon>Incidencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Incidencias.aspx.designer.cs">
+      <DependentUpon>Incidencias.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

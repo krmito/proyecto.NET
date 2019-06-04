@@ -14,15 +14,24 @@ namespace ticket_tracker.Modelos
     
     public partial class Incidencia
     {
+        public Incidencia()
+        {
+            this.Incidencias1 = new HashSet<Incidencia>();
+        }
+    
         public int Id { get; set; }
         public int Id_aplicativo { get; set; }
         public int Id_usuario { get; set; }
         public string Descripcion { get; set; }
         public System.DateTime Fecha_estimada { get; set; }
         public int Id_prioridad { get; set; }
+        public int Id_estado { get; set; }
+        public Nullable<int> Id_incidencia_papa { get; set; }
     
         public virtual Aplicativo Aplicativo { get; set; }
         public virtual Prioridad Prioridad { get; set; }
         public virtual Usuario Usuario { get; set; }
+        public virtual ICollection<Incidencia> Incidencias1 { get; set; }
+        public virtual Incidencia Incidencia1 { get; set; }
     }
 }

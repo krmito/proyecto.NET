@@ -25,6 +25,8 @@
     <EntitySetMapping Name="Incidencias">
       <EntityTypeMapping TypeName="proyecto_finalModel.Incidencia">
         <MappingFragment StoreEntitySet="Incidencias">
+          <ScalarProperty Name="Id_incidencia_papa" ColumnName="Id_incidencia_papa" />
+          <ScalarProperty Name="Id_estado" ColumnName="Id_estado" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Id_aplicativo" ColumnName="Id_aplicativo" />
           <ScalarProperty Name="Id_usuario" ColumnName="Id_usuario" />
