@@ -23,6 +23,7 @@
           <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="Descripcion" Type="nchar" MaxLength="300" />
           <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Tipo" Type="int" />
         </EntityType>
         <EntityType Name="Incidencias">
           <Key>
@@ -61,7 +62,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="Descripcion" Type="nchar" MaxLength="300" />
-          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -119,6 +120,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Incidencias_To_estados">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidencias">
+              <PropertyRef Name="Id_estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Incidencias_To_incidencias">
           <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="0..1" />
           <End Role="Incidencias1" Type="Self.Incidencias" Multiplicity="*" />
@@ -131,7 +144,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Incidencias_To_prioridades">
+        <Association Name="FK_Incidencias_To_prioridadess">
           <End Role="Prioridad" Type="Self.Prioridad" Multiplicity="1" />
           <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
           <ReferentialConstraint>
@@ -236,11 +249,15 @@
             <End Role="Aplicativos" EntitySet="Aplicativos" />
             <End Role="Incidencias" EntitySet="Incidencias" />
           </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_To_estados" Association="Self.FK_Incidencias_To_estados">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Incidencias" EntitySet="Incidencias" />
+          </AssociationSet>
           <AssociationSet Name="FK_Incidencias_To_incidencias" Association="Self.FK_Incidencias_To_incidencias">
             <End Role="Incidencias" EntitySet="Incidencias" />
             <End Role="Incidencias1" EntitySet="Incidencias" />
           </AssociationSet>
-          <AssociationSet Name="FK_Incidencias_To_prioridades" Association="Self.FK_Incidencias_To_prioridades">
+          <AssociationSet Name="FK_Incidencias_To_prioridadess" Association="Self.FK_Incidencias_To_prioridadess">
             <End Role="Prioridad" EntitySet="Prioridad" />
             <End Role="Incidencias" EntitySet="Incidencias" />
           </AssociationSet>
@@ -298,6 +315,8 @@
           <NavigationProperty Name="Roles" Relationship="Self.FK_Roles_To_estados" FromRole="Estados" ToRole="Roles" />
           <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_To_estados" FromRole="Estados" ToRole="Usuarios" />
           <Property Name="Estado1" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Incidencias" Relationship="proyecto_finalModel.FK_Incidencias_To_estados" FromRole="Estado" ToRole="Incidencia" />
+          <Property Name="Tipo" Type="Int32" />
         </EntityType>
         <EntityType Name="Incidencia">
           <Key>
@@ -316,6 +335,7 @@
           <Property Name="Id_incidencia_papa" Type="Int32" />
           <NavigationProperty Name="Incidencias1" Relationship="proyecto_finalModel.FK_Incidencias_To_incidencias" FromRole="Incidencia" ToRole="Incidencia1" />
           <NavigationProperty Name="Incidencia1" Relationship="proyecto_finalModel.FK_Incidencias_To_incidencias" FromRole="Incidencia1" ToRole="Incidencia" />
+          <NavigationProperty Name="Estado" Relationship="proyecto_finalModel.FK_Incidencias_To_estados" FromRole="Incidencia" ToRole="Estado" />
         </EntityType>
         <EntityType Name="Prioridad">
           <Key>
@@ -345,7 +365,7 @@
           <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Aplicativos" Relationship="Self.FK_Aplicativos_To_Tipo" FromRole="Tipo_aplicativo" ToRole="Aplicativos" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -512,6 +532,10 @@
             <End Role="Incidencia" EntitySet="Incidencias" />
             <End Role="Incidencia1" EntitySet="Incidencias" />
           </AssociationSet>
+          <AssociationSet Name="FK_Incidencias_To_estados" Association="proyecto_finalModel.FK_Incidencias_To_estados">
+            <End Role="Estado" EntitySet="Estados" />
+            <End Role="Incidencia" EntitySet="Incidencias" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Incidencias_To_incidencias">
           <End Type="proyecto_finalModel.Incidencia" Role="Incidencia" Multiplicity="0..1" />
@@ -522,6 +546,18 @@
             </Principal>
             <Dependent Role="Incidencia1">
               <PropertyRef Name="Id_incidencia_papa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencias_To_estados">
+          <End Type="proyecto_finalModel.Estado" Role="Estado" Multiplicity="1" />
+          <End Type="proyecto_finalModel.Incidencia" Role="Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="Id_estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -545,6 +581,7 @@
           <EntitySetMapping Name="Estados">
             <EntityTypeMapping TypeName="proyecto_finalModel.Estado">
               <MappingFragment StoreEntitySet="Estados">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Estado1" ColumnName="Estado" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />

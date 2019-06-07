@@ -57,7 +57,8 @@ namespace ticket_tracker
                         { 
                             Nombre = txtNombre.Text,
                             Descripcion = txtDescripcion.Text,
-                            Estado1 = Convert.ToBoolean(ddlActivo.SelectedItem.Value)
+                            Estado1 = Convert.ToBoolean(ddlActivo.SelectedItem.Value),
+                            Tipo = Convert.ToInt32(ddlTipoEstado.SelectedItem.Value)
                         });
                         entidades.SaveChanges();
                         LblMessage.Text = "Registro Insertado Satisfactoriamente.";
@@ -74,7 +75,7 @@ namespace ticket_tracker
                         estado.Nombre = txtNombre.Text;
                         estado.Descripcion = txtDescripcion.Text;
                         estado.Estado1 = Convert.ToBoolean(ddlActivo.SelectedItem.Value);
-
+                        estado.Tipo = Convert.ToInt32(ddlTipoEstado.SelectedItem.Value);
                         entidades.SaveChanges();
                         LblMessage.Text = "Registro Actualizado Satisfactoriamente.";
                         CargarEstados();
@@ -144,6 +145,8 @@ namespace ticket_tracker
                         txtId.Text = Convert.ToString(estado.Id);
                         txtNombre.Text = estado.Nombre;
                         txtDescripcion.Text = estado.Descripcion;
+                        ddlActivo.SelectedValue = Convert.ToString(estado.Estado1);
+                        ddlTipoEstado.SelectedValue = Convert.ToString(estado.Tipo);
                         this.tabla.Visible = false;
                         this.formulario.Visible = true;
                         this.btnNuevo.Visible = false;

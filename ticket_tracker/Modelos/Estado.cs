@@ -19,15 +19,18 @@ namespace ticket_tracker.Modelos
             this.Aplicativos = new HashSet<Aplicativo>();
             this.Roles = new HashSet<Role>();
             this.Usuarios = new HashSet<Usuario>();
+            this.Incidencias = new HashSet<Incidencia>();
         }
     
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public bool Estado1 { get; set; }
+        public Nullable<int> Tipo { get; set; }
     
         public virtual ICollection<Aplicativo> Aplicativos { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<Incidencia> Incidencias { get; set; }
     }
 }

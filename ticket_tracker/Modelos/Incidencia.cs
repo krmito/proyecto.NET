@@ -33,5 +33,6 @@ namespace ticket_tracker.Modelos
         public virtual Usuario Usuario { get; set; }
         public virtual ICollection<Incidencia> Incidencias1 { get; set; }
         public virtual Incidencia Incidencia1 { get; set; }
+        public virtual Estado Estado { get; set; }
     }
 }

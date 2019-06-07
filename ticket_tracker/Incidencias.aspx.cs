@@ -54,7 +54,9 @@ namespace ticket_tracker
         {
             using (proyecto_finalEntities entidades = new proyecto_finalEntities())
             {
-                var estados = entidades.Estados.ToList<Estado>();
+                var estados = entidades.Estados
+                    .Where(s => s.Tipo == 1)
+                    .ToList<Estado>();
                 ddlEstados.DataSource = estados;
                 ddlEstados.DataBind();
             }
@@ -88,15 +90,17 @@ namespace ticket_tracker
                 using (proyecto_finalEntities entidades = new proyecto_finalEntities())
                 {
                     var id = Convert.ToInt32(txtId.Text);
+                    var ent = entidades.Incidencias.ToList();
 
                     entidades.Incidencias.Add(new Incidencia
                     {
                         Id_aplicativo = Convert.ToInt32(ddlAplicativo.SelectedItem.Value),
                         Id_usuario = Convert.ToInt32(ddlAsignadoA.SelectedItem.Value),
-                        Descripcion = txtDescripcion.Text,
+                        Descripcion = txtDescripcion.Text.Trim(),
                         Fecha_estimada = Convert.ToDateTime(txtFecha.Text),
                         Id_prioridad = Convert.ToInt32(ddlPrioridad.SelectedItem.Value),
-                        Id_incidencia_papa = Convert.ToInt32(txtId.Text)
+                        Id_incidencia_papa = txtPapa.Text == "" ? Convert.ToInt32(txtId.Text) : Convert.ToInt32(txtPapa.Text),
+                        Id_estado = Convert.ToInt32(ddlEstados.SelectedItem.Value)
                     });
                     entidades.SaveChanges();
                     LblMessage.Text = "Registro Insertado Satisfactoriamente.";
@@ -160,13 +164,12 @@ namespace ticket_tracker
                         txtId.Text = Convert.ToString(incidencias.Id);
                         ddlAplicativo.SelectedItem.Value = Convert.ToString(incidencias.Id_aplicativo);
                         ddlAsignadoA.SelectedItem.Value = Convert.ToString(incidencias.Id_usuario);
-                        ddlPrioridad.SelectedItem.Value = Convert.ToString(incidencias.Id_aplicativo);
+                        ddlPrioridad.SelectedItem.Value = Convert.ToString(incidencias.Id_prioridad);
                         txtDescripcion.Text = Convert.ToString(incidencias.Descripcion);
-                        txtFecha.Text = Convert.ToString(incidencias.Fecha_estimada);
-
+                        txtFecha.Text = incidencias.Fecha_estimada.ToShortDateString();
+                        txtPapa.Text = Convert.ToString(incidencias.Id_incidencia_papa);
                         this.tabla.Visible = false;
-                        this.formulario.Visible = true; 
-                        entidades.SaveChanges();
+                        this.formulario.Visible = true;
                     }
                 }
                 catch (Exception sqlEx)

@@ -44,9 +44,6 @@
             </td>
             <td>
                 <asp:DropDownList ID="ddlEstado" runat="server" Height="16px" Width="313px">
-                    <asp:ListItem Value="1">--Seleciona--</asp:ListItem>
-                    <asp:ListItem Value="true">Activo</asp:ListItem>
-                    <asp:ListItem Value="false">Inactivo</asp:ListItem>
                 </asp:DropDownList>
             </td>
             <td>&nbsp;</td>
@@ -86,7 +83,7 @@
                 <asp:BoundField HeaderText="DESCRIPCION" DataField="Descripcion" />
                 <asp:TemplateField HeaderText="ESTADO">
                      <ItemTemplate>
-                    <asp:Label Text='<%# Eval("Estado").ToString() == "true" ? "Activo" : "Inactivo" %>'
+                    <asp:Label Text='<%# Eval("Estado").ToString() == "True" ? "Activo" : "Inactivo" %>'
                     runat="server" />
                     </ItemTemplate>
                 </asp:TemplateField>

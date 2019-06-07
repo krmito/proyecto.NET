@@ -55,8 +55,27 @@
             <td class="auto-style2">
                 <asp:DropDownList ID="ddlActivo" runat="server" Height="16px" Width="289px">
                     <asp:ListItem Value="1">--Selecciona--</asp:ListItem>
-                    <asp:ListItem Value="true">Activo</asp:ListItem>
-                    <asp:ListItem Value="false">Inactivo</asp:ListItem>
+                    <asp:ListItem Value="True">Activo</asp:ListItem>
+                    <asp:ListItem Value="False">Inactivo</asp:ListItem>
+                </asp:DropDownList>
+            </td>
+            <td class="auto-style2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style2">
+                &nbsp;</td>
+            <td class="auto-style2">
+                &nbsp;</td>
+            <td class="auto-style2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style2">
+                <asp:Label ID="Label6" runat="server" Text="Tipo:"></asp:Label>
+            </td>
+            <td class="auto-style2">
+                <asp:DropDownList ID="ddlTipoEstado" runat="server" Height="16px" Width="289px">
+                    <asp:ListItem Value="1">Incidencia</asp:ListItem>
+                    <asp:ListItem Value="2">General</asp:ListItem>
                 </asp:DropDownList>
             </td>
             <td class="auto-style2">&nbsp;</td>
@@ -64,7 +83,7 @@
         <tr>
             <td class="auto-style2">&nbsp;</td>
             <td class="auto-style2">
-                <asp:TextBox ID="txtId" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtId" runat="server" Visible="False"></asp:TextBox>
             </td>
             <td class="auto-style2">&nbsp;</td>
         </tr>
@@ -88,7 +107,7 @@
                 <asp:BoundField DataField="Descripcion" HeaderText="DESCRIPCIÓN" />
                 <asp:TemplateField HeaderText="ESTADO">
                     <ItemTemplate>
-                    <asp:Label Text='<%# Eval("Estado1").ToString() == "true" ? "Activo" : "Inactivo" %>'
+                    <asp:Label Text='<%# Eval("Estado1").ToString() == "True" ? "Activo" : "Inactivo" %>'
                     runat="server" />
                     </ItemTemplate>
                 </asp:TemplateField>
