@@ -76,6 +76,7 @@
     <Content Include="Incidencias.aspx" />
     <Content Include="master_page.Master" />
     <Content Include="Master_Soporte.Master" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

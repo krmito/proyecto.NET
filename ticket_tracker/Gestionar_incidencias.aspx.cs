@@ -49,7 +49,9 @@ namespace ticket_tracker
         {
             using (proyecto_finalEntities entidades = new proyecto_finalEntities())
             {
-                var estados = entidades.Estados.ToList<Estado>();
+                var estados = entidades.Estados
+                    .Where(s => s.Tipo == 1)
+                    .ToList<Estado>();
                 ddlEstado.DataSource = estados;
                 ddlEstado.DataBind();
             }
@@ -92,7 +94,8 @@ namespace ticket_tracker
                             Id_usuario = Convert.ToInt32(ddlAsignadoA.SelectedItem.Value),
                             Descripcion = txtDescripcion.Text,
                             Fecha_estimada = Convert.ToDateTime(txtFecha.Text),
-                            Id_prioridad = Convert.ToInt32(ddlPrioridad.SelectedItem.Value)
+                            Id_prioridad = Convert.ToInt32(ddlPrioridad.SelectedItem.Value),
+                            Id_estado = Convert.ToInt32(ddlEstado.SelectedItem.Value)
                         });
                         entidades.SaveChanges();
                         LblMessage.Text = "Registro Insertado Satisfactoriamente.";

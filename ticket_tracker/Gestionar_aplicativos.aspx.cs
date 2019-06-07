@@ -29,7 +29,7 @@ namespace ticket_tracker
             using (proyecto_finalEntities entidades = new proyecto_finalEntities())
             {
                 var estados = entidades.Estados
-                                .Where(s => s.Estado1 == true)
+                                .Where(s => s.Tipo == 2)
                                 .ToList<Estado>();
                 ddlEstado.DataSource = estados;
                 ddlEstado.DataBind();
@@ -41,7 +41,6 @@ namespace ticket_tracker
             using (proyecto_finalEntities entidades = new proyecto_finalEntities())
             {
                 var tipo = entidades.Tipo_aplicativo
-                                .Where(s => s.Estado == true)
                                 .ToList<Tipo_aplicativo>();
                 ddlTipo.DataSource = tipo;
                 ddlTipo.DataBind();

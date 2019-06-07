@@ -61,7 +61,7 @@
                     <asp:Label ID="Label7" runat="server" Text="Fecha de asignación:"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtFecha" runat="server" Height="16px" TextMode="Date" Width="209px" Enabled="False"></asp:TextBox>
+                    <asp:TextBox ID="txtFecha" runat="server" Height="16px" TextMode="Date" Width="209px"></asp:TextBox>
                 </td>
                 <td>&nbsp;</td>
             </tr>
@@ -73,7 +73,7 @@
             <tr>
                 <td>Prioridad</td>
                 <td>
-                    <asp:DropDownList ID="ddlPrioridad" runat="server" Height="18px" Width="217px" DataTextField="Nombre" DataValueField="Id" Enabled="False">
+                    <asp:DropDownList ID="ddlPrioridad" runat="server" Height="18px" Width="217px" DataTextField="Nombre" DataValueField="Id">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
@@ -101,7 +101,8 @@
             </tr>
             <tr>
                 <td>
-                    <asp:TextBox ID="txtId" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtId" runat="server" Visible="False"></asp:TextBox>
+                    <asp:TextBox ID="txtPapa" runat="server" Visible="False"></asp:TextBox>
                 </td>
                 <td>
                     <asp:Button ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar" />
@@ -122,8 +123,8 @@
                 <asp:BoundField DataField="Fecha_estimada" HeaderText="FECHA ESTIMADA" />
                 <asp:BoundField DataField="Prioridad.Nombre" HeaderText="PRIORIDAD" />
                 <asp:BoundField DataField="Id_incidencia_papa" HeaderText="ID INCIDENCIA PAPÁ" />
+                <asp:BoundField DataField="Estado.Nombre" HeaderText="ESTADOS" />
                 <asp:ButtonField CommandName="Upd" Text="Gestionar" />
-                <asp:ButtonField CommandName="Del" Text="Elimimar" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

@@ -18,6 +18,7 @@
     <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="Descripcion" Type="nchar" MaxLength="300" />
     <Property Name="Estado" Type="bit" Nullable="false" />
+    <Property Name="Tipo" Type="int" />
   </EntityType>
   <EntityType Name="Incidencias">
     <Key>
@@ -56,7 +57,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
     <Property Name="Descripcion" Type="nchar" MaxLength="300" />
-    <Property Name="Estado" Type="bit" Nullable="false" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Usuarios">
     <Key>
@@ -114,6 +115,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Incidencias_To_estados">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+    <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Incidencias">
+        <PropertyRef Name="Id_estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Incidencias_To_incidencias">
     <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="0..1" />
     <End Role="Incidencias1" Type="Self.Incidencias" Multiplicity="*" />
@@ -126,7 +139,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Incidencias_To_prioridades">
+  <Association Name="FK_Incidencias_To_prioridadess">
     <End Role="Prioridad" Type="Self.Prioridad" Multiplicity="1" />
     <End Role="Incidencias" Type="Self.Incidencias" Multiplicity="*" />
     <ReferentialConstraint>
@@ -231,11 +244,15 @@
       <End Role="Aplicativos" EntitySet="Aplicativos" />
       <End Role="Incidencias" EntitySet="Incidencias" />
     </AssociationSet>
+    <AssociationSet Name="FK_Incidencias_To_estados" Association="Self.FK_Incidencias_To_estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Incidencias" EntitySet="Incidencias" />
+    </AssociationSet>
     <AssociationSet Name="FK_Incidencias_To_incidencias" Association="Self.FK_Incidencias_To_incidencias">
       <End Role="Incidencias" EntitySet="Incidencias" />
       <End Role="Incidencias1" EntitySet="Incidencias" />
     </AssociationSet>
-    <AssociationSet Name="FK_Incidencias_To_prioridades" Association="Self.FK_Incidencias_To_prioridades">
+    <AssociationSet Name="FK_Incidencias_To_prioridadess" Association="Self.FK_Incidencias_To_prioridadess">
       <End Role="Prioridad" EntitySet="Prioridad" />
       <End Role="Incidencias" EntitySet="Incidencias" />
     </AssociationSet>
