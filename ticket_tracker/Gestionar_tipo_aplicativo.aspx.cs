@@ -16,7 +16,6 @@ namespace ticket_tracker
             if(!IsPostBack){
                 txtId.Text = Convert.ToString(id);
                 CargarTipoAplicatvos();
-                CargarEstados();
                 this.tabla.Visible = true;
                 this.formulario.Visible = false;
             }
@@ -32,18 +31,6 @@ namespace ticket_tracker
             }
         }
 
-
-        private void CargarEstados()
-        {
-            using (proyecto_finalEntities entidades = new proyecto_finalEntities())
-            {
-                var estados = entidades.Estados
-                    .Where(s => s.Tipo == 1)
-                    .ToList<Estado>();
-                ddlEstado.DataSource = estados;
-                ddlEstado.DataBind();
-            }
-        }
 
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -116,7 +103,6 @@ namespace ticket_tracker
             txtNombre.Text = "";
             txtDescripcion.Text = "";
             txtId.Text = "0";
-            ddlEstado.SelectedValue = "1";
         }
 
         protected void gvTipoAplicativo_RowCommand(object sender, GridViewCommandEventArgs e)

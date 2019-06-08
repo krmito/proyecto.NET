@@ -5,8 +5,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Descrpcion" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descrpcion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="Id_tipo" Type="Int32" Nullable="false" />
     <Property Name="Id_estado" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Estado" Relationship="Self.FK_Aplicativos_To_Estados" FromRole="Aplicativos" ToRole="Estados" />
@@ -19,8 +19,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Aplicativos" Relationship="Self.FK_Aplicativos_To_Estados" FromRole="Estados" ToRole="Aplicativos" />
     <NavigationProperty Name="Roles" Relationship="Self.FK_Roles_To_estados" FromRole="Estados" ToRole="Roles" />
     <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_To_estados" FromRole="Estados" ToRole="Usuarios" />
@@ -35,7 +35,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" />
     <Property Name="Id_aplicativo" Type="Int32" Nullable="false" />
     <Property Name="Id_usuario" Type="Int32" Nullable="false" />
-    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="Fecha_estimada" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Id_prioridad" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Aplicativo" Relationship="Self.FK_Incidencias_To_aplicativos" FromRole="Incidencias" ToRole="Aplicativos" />
@@ -52,8 +52,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Incidencias" Relationship="Self.FK_Incidencias_To_prioridades" FromRole="Prioridad" ToRole="Incidencias" />
   </EntityType>
   <EntityType Name="Role">
@@ -61,8 +61,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="Id_estado" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Estado" Relationship="Self.FK_Roles_To_estados" FromRole="Roles" ToRole="Estados" />
     <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_To_roles" FromRole="Roles" ToRole="Usuarios" />
@@ -72,8 +72,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Aplicativos" Relationship="Self.FK_Aplicativos_To_Tipo" FromRole="Tipo_aplicativo" ToRole="Aplicativos" />
     <Property Name="Estado" Type="Boolean" />
   </EntityType>
@@ -82,16 +82,16 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Fecha_nacimiento" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Id_estado" Type="Int32" Nullable="false" />
     <Property Name="Id_rol" Type="Int32" Nullable="false" />
-    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Estado" Relationship="Self.FK_Usuarios_To_estados" FromRole="Usuarios" ToRole="Estados" />
     <NavigationProperty Name="Incidencias" Relationship="Self.FK_Incidencias_To_usuarios" FromRole="Usuarios" ToRole="Incidencias" />
     <NavigationProperty Name="Role" Relationship="Self.FK_Usuarios_To_roles" FromRole="Usuarios" ToRole="Roles" />
     <NavigationProperty Name="Aplicativo" Relationship="Self.Usuarios_aplicativos" FromRole="Usuarios" ToRole="Aplicativos" />
-    <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Aplicativos_To_Estados">
     <End Role="Estados" Type="Self.Estado" Multiplicity="1" />

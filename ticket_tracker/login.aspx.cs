@@ -22,18 +22,18 @@ namespace ticket_tracker
             {
                 var usuario = entidades.Usuarios
                                 .Where(s => s.NombreUsuario.Trim() == Login1.UserName.Trim()
-                                    && s.Contrasena.Trim() == Login1.Password.Trim() && s.Id_estado == 2)
+                                    && s.Contrasena.Trim() == Login1.Password.Trim() && s.Estado.Nombre == "Activo")
                                 .FirstOrDefault<Usuario>();
                 if (usuario != null)
                 {
-                    if (usuario.Id_rol == 2)
+                    if (usuario.Role.Nombre == "Administrador")
                     {
                         autenticado = true;
                         Session.Add("USUARIO", usuario);
                         e.Authenticated = autenticado;
                         Response.Redirect("Principal.aspx");
                     }
-                    else if (usuario.Id_rol == 1003)
+                    else if (usuario.Role.Nombre == "Desarrollador")
                     {
                         autenticado = true;
                         Session.Add("USUARIO", usuario);
