@@ -5,8 +5,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
-    <Property Name="Descrpcion" Type="nchar" MaxLength="300" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descrpcion" Type="nvarchar" MaxLength="300" />
     <Property Name="Id_tipo" Type="int" Nullable="false" />
     <Property Name="Id_estado" Type="int" Nullable="false" />
   </EntityType>
@@ -15,8 +15,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
-    <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="300" />
     <Property Name="Estado" Type="bit" Nullable="false" />
     <Property Name="Tipo" Type="int" />
   </EntityType>
@@ -27,7 +27,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Id_aplicativo" Type="int" Nullable="false" />
     <Property Name="Id_usuario" Type="int" Nullable="false" />
-    <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="300" />
     <Property Name="Fecha_estimada" Type="datetime" Nullable="false" />
     <Property Name="Id_prioridad" Type="int" Nullable="false" />
     <Property Name="Id_estado" Type="int" Nullable="false" />
@@ -38,16 +38,16 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
-    <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="300" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
-    <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="300" />
     <Property Name="Id_estado" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Tipo_aplicativo">
@@ -55,8 +55,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
-    <Property Name="Descripcion" Type="nchar" MaxLength="300" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="300" />
     <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Usuarios">
@@ -64,12 +64,12 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Fecha_nacimiento" Type="datetime" Nullable="false" />
     <Property Name="Id_estado" Type="int" Nullable="false" />
     <Property Name="Id_rol" Type="int" Nullable="false" />
-    <Property Name="Contrasena" Type="nchar" MaxLength="50" Nullable="false" />
-    <Property Name="NombreUsuario" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Contrasena" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NombreUsuario" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Usuarios_aplicativos">
     <Key>

@@ -43,7 +43,9 @@
                 <asp:Label ID="Label5" runat="server" Text="Estado:"></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="ddlEstado" runat="server" Height="16px" Width="313px">
+                <asp:DropDownList ID="ddlEstado" runat="server" Height="16px" Width="313px" DataTextField="Nombre" DataValueField="Id">
+                    <asp:ListItem Value="True">Activo</asp:ListItem>
+                    <asp:ListItem Value="False">Inactivo</asp:ListItem>
                 </asp:DropDownList>
             </td>
             <td>&nbsp;</td>

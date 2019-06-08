@@ -80,7 +80,7 @@
         </tr>
         <tr>
             <td class="auto-style2">
-                <asp:TextBox ID="txtId" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtId" runat="server" Visible="False"></asp:TextBox>
             </td>
             <td class="auto-style2">
                 <asp:Button ID="Button1" runat="server" Text="Guardar" OnClick="Button1_Click" />

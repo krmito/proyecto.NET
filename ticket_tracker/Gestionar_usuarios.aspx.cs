@@ -40,7 +40,6 @@ namespace ticket_tracker
             using (proyecto_finalEntities entidades = new proyecto_finalEntities())
             {
                 var roles = entidades.Roles
-                    .Where(s => s.Id_estado == 7)
                     .ToList<Role>();
                 ddlRol.DataSource = roles;
                 ddlRol.DataBind();
